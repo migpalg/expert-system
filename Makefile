@@ -9,3 +9,6 @@ init-dev:
 
 install-pipenv:
 	python -m pip install --user pipenv
+
+deploy-docker:
+	docker-compose up -d --build

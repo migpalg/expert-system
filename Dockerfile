@@ -2,19 +2,14 @@ FROM python:3-alpine
 
 WORKDIR /usr/src/app
 
-RUN pip install --user pipenv
+RUN pip install --user --no-warn-script-location pipenv
 
-COPY Pipfile ./
-COPY Pipfile.lock ./
+COPY . .
 
-COPY expert expert
-
-ENV FLASK_APP='expert'
-ENV FLASK_ENV=development
-ENV FLASK_RUN_PORT=5000
+ENV PORT=8003
 
 RUN python -m pipenv install
 
-EXPOSE 5000
+EXPOSE 8003
 
-CMD [ "python", "-m", "pipenv", "run", "flask", "run"]
+CMD ["python", "-m", "pipenv", "run", "sh", "./gunicorn_start.sh"]
