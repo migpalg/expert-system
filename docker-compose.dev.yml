@@ -3,9 +3,11 @@ services:
   expert-api:
     build:
       context: .
-      dockerfile: ./docker/Dockerfile
+      dockerfile: ./docker/Dockerfile.dev
+    volumes:
+      - ./expert:/usr/src/app/expert
     ports:
-      - "8003:8003"
+      - "5000:5000"
   mongo:
     image: mongo
     restart: always

@@ -6,6 +6,8 @@ name = "pypi"
 [packages]
 flask = "*"
 gunicorn = "*"
+flask-pymongo = "*"
+pymongo = "*"
 
 [dev-packages]
 autopep8 = "*"

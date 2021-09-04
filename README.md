@@ -23,4 +23,16 @@ s
 
 ## 🚀 Deployment
 
-TODO: Deployment instructions with Docker and Heroku
+### 🐋 Docker
+
+To deploy this application using docker, just run this `docker-compose` command:
+
+```bash
+docker-compose up -d --build
+```
+
+This will create the required container to make the application work.
+
+### 📦 Heroku
+
+TODO: Implement Heroku deployment

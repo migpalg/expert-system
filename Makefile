@@ -12,3 +12,6 @@ install-pipenv:
 
 deploy-docker:
 	docker-compose up -d --build
+
+build-docker-image:
+	docker build -t expert-system-api:$(tag) -f docker/Dockerfile .

@@ -1,4 +1,3 @@
-import json
 from flask import Blueprint
 from uuid import uuid4
 
@@ -7,40 +6,38 @@ questions = Blueprint('questions', __name__, url_prefix='/questions')
 
 @questions.route('', methods=['GET', 'POST'])
 def get_questions():
-    questions = {
+    return {
         'questions': [
             {
-                'id': '1',
+                'id': uuid4(),
                 'title': 'hello world!',
                 'options': [
                     {
-                        'option_id': '1.1',
+                        'option_id': uuid4(),
                         'text': 'Option 1',
                     },
                     {
-                        'option_id': '1.2',
+                        'option_id': uuid4(),
                         'text': 'Option 2',
                     }
                 ]
             },
             {
-                'id': '2',
+                'id': uuid4(),
                 'title': 'question 2',
                 'options': [
                     {
-                        'option_id': '2.1',
+                        'option_id': uuid4(),
                         'text': 'Option 1'
                     },
                     {
-                        'option_id': '2.2',
+                        'option_id': uuid4(),
                         'text': 'Option 2'
                     }
                 ]
             }
         ]
     }
-
-    return json.dumps(questions, separators=(',', ':'))
 
 
 @questions.route('/create', methods=['POST'])
