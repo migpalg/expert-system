@@ -1,4 +1,4 @@
-from flask import Blueprint
+from flask import Blueprint, request
 from uuid import uuid4
 
 questions = Blueprint('questions', __name__, url_prefix='/questions')
@@ -43,5 +43,6 @@ def get_questions():
 @questions.route('/create', methods=['POST'])
 def create_question():
     return {
-        'message': 'question created'
+        'message': 'question created',
+        'question_id': uuid4()
     }
