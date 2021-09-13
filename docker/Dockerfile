@@ -6,10 +6,12 @@ RUN pip install --user --no-warn-script-location pipenv
 
 COPY . .
 
+RUN python -m pipenv lock --requirements > requirements.txt
+
 ENV PORT=8003
 
-RUN python -m pipenv install
+RUN python -m pip install -r requirements.txt
 
 EXPOSE 8003
 
-CMD ["python", "-m", "pipenv", "run", "sh", "./gunicorn_start.sh"]
+CMD ["sh", "./gunicorn_start.sh"]

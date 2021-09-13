@@ -1,0 +1,8 @@
+{
+    "profiles": [
+        {
+            "id": "frontend_dev",
+            "display_name": "Frontend Dev"
+        }
+    ]
+}

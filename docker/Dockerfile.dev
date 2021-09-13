@@ -6,7 +6,9 @@ RUN pip install --user --no-warn-script-location pipenv
 
 COPY . .
 
-RUN python -m pipenv install
+RUN python -m pipenv lock --requirements > requirements.txt
+
+RUN python -m pip install -r requirements.txt
 
 ENV FLASK_APP=expert
 ENV FLASK_ENV=development
@@ -14,4 +16,4 @@ ENV FLASK_PORT=5000
 
 EXPOSE 5000
 
-CMD ["python", "-m", "pipenv", "run", "flask", "run", "--host=0.0.0.0"]
+CMD ["python", "-m", "flask", "run", "--host=0.0.0.0"]

@@ -11,5 +11,6 @@ def create_app(test_config=None) -> Flask:
         app.config.from_mapping(test_config)
 
     app.register_blueprint(blueprints.questions)
+    app.register_blueprint(blueprints.careers)
 
     return app

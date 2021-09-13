@@ -14,4 +14,4 @@ deploy-docker:
 	docker-compose up -d --build
 
 build-docker-image:
-	docker build -t expert-system-api:$(tag) -f docker/Dockerfile .
+	docker build -t migpalg.dev/expert/api:$(tag) -f docker/Dockerfile .
