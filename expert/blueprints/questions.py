@@ -7,17 +7,18 @@ questions = Blueprint('questions', __name__, url_prefix='/questions')
 @questions.route('', methods=['GET', 'POST'])
 def get_questions():
     return {
+        'count': 2,
         'questions': [
             {
                 'id': uuid4(),
                 'title': 'hello world!',
                 'options': [
                     {
-                        'option_id': uuid4(),
+                        'value': uuid4(),
                         'text': 'Option 1',
                     },
                     {
-                        'option_id': uuid4(),
+                        'value': uuid4(),
                         'text': 'Option 2',
                     }
                 ]
@@ -27,11 +28,11 @@ def get_questions():
                 'title': 'question 2',
                 'options': [
                     {
-                        'option_id': uuid4(),
+                        'value': uuid4(),
                         'text': 'Option 1'
                     },
                     {
-                        'option_id': uuid4(),
+                        'value': uuid4(),
                         'text': 'Option 2'
                     }
                 ]

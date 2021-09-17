@@ -2,16 +2,16 @@ FROM python:3-alpine
 
 WORKDIR /usr/src/app
 
-RUN pip install --user --no-warn-script-location pipenv
-
-COPY . .
-
-RUN python -m pipenv lock --requirements > requirements.txt
-
-ENV PORT=8003
+COPY requirements.txt .
 
 RUN python -m pip install -r requirements.txt
 
+COPY expert expert
+COPY data data
+COPY scripts/gunicorn_start.sh scripts/gunicorn_start.sh
+
+ENV PORT=8003
+
 EXPOSE 8003
 
-CMD ["sh", "./gunicorn_start.sh"]
+CMD ["sh", "./scripts/gunicorn_start.sh"]
