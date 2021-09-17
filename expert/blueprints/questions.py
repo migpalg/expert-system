@@ -1,3 +1,4 @@
+import json
 from flask import Blueprint, request
 from uuid import uuid4
 
@@ -6,39 +7,12 @@ questions = Blueprint('questions', __name__, url_prefix='/questions')
 
 @questions.route('', methods=['GET', 'POST'])
 def get_questions():
-    return {
-        'count': 2,
-        'questions': [
-            {
-                'id': uuid4(),
-                'title': 'hello world!',
-                'options': [
-                    {
-                        'value': uuid4(),
-                        'text': 'Option 1',
-                    },
-                    {
-                        'value': uuid4(),
-                        'text': 'Option 2',
-                    }
-                ]
-            },
-            {
-                'id': uuid4(),
-                'title': 'question 2',
-                'options': [
-                    {
-                        'value': uuid4(),
-                        'text': 'Option 1'
-                    },
-                    {
-                        'value': uuid4(),
-                        'text': 'Option 2'
-                    }
-                ]
-            }
-        ]
-    }
+    with open('data/initial_config.json') as f:
+        data = json.load(f)
+        return {
+            'count': len(data['questions']),
+            'data': data['questions']
+        }
 
 
 @questions.route('/create', methods=['POST'])
